@@ -53,6 +53,15 @@ const Chats = () => {
             getFile(user.photoUrl)
                .then((avatar) => {
                    formdata.append('avatar', avatar, avatar.name)
+
+                   axios.post('https://api/chatengine.io/users',
+                    formData, 
+                    { headers: {"private-key": "dca26d6e-6226-4edd-aa3f-65e8ca26af1a" } }
+                   )
+                   .then(() => setLoading(false))
+                   .catch((error) => console.log(error))
+
+
                })
         })
     }, [user, history])
